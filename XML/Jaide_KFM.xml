@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Wind
+    Roundhouse Kick         112180 var 9
+    Awakend Roundhouse Kick 112700 var 9
+    Cyclone Kick            112040 var 5
+    Awakend Cyclone Kick    112720 var 5
+    Comet Strike            112240 var 1
+    Warcry                  112725 var 1
+-->
+<!-- Fire
+    Dragon Claw          111180, 111181, 111182, 111183, 111184, 111185, 111186, 111187 var 1
+    Awakend Dragon Claw  111700, 111701, 111702, 111706
+    Burning Fist         111520, 111521, 111522, 111524, 111525, 111526
+    Awakend Burning Fist 111720, 111721, 111722
+    Guiding fist         111330 var 1
+    Avenging fist        111311 var 1
+    Smolder              111050 var 3
+    Comet Strike         111240 var 3
+    Tremor               111400 var 3
+    Searing Dragon       111370 var 3
+    volcano              86
+    raging volcano
+
+-->
+<patches>
+    <!-- Remaps-->
+    <patch filename="*skill3_contextscriptdata_kungfufighter.xml">
+
+        <!-- Remove B ULT-->
+        <select-nodes query="//result[@special-2]">
+            <remove />
+        </select-nodes>
+
+        <!-- Move Guiding fist and Avenging Fist to 2-->
+        <select-nodes
+            query="//result[@context-2='111330' or @context-2='111311']"
+        >
+            <select-node query="@context-2">
+                <set-value value="" />
+            </select-node>
+        </select-nodes>
+
+        <!-- Cyclone Kick-->
+        <select-nodes
+            query="//result[@context-3='112040' or @context-3='112720']"
+        >
+            <select-node query="@context-3">
+                <set-value value="" />
+            </select-node>
+        </select-nodes>
+
+        <!-- Remove additional Dragon Claw from RMB -->
+        <select-nodes query="//result[@context-2='111180']">
+            <select-node query="@context-2">
+                <set-value value="" />
+            </select-node>
+        </select-nodes>
+
+        <!-- Remove Smolder From F -->
+        <select-nodes query="//result[@context-3='111050']">
+            <select-node query="@context-3">
+                <set-value value="" />
+            </select-node>
+        </select-nodes>
+
+        <!-- Fire move Dragon Claw and Awakend Dragon Claw to RMB -->
+        <select-nodes
+            query="//result[@skillbar-2='111180' or @skillbar-2='111181' or @skillbar-2='111182' or @skillbar-2='111183' or @skillbar-2='111184' or @skillbar-2='111185' or @skillbar-2='111186' or @skillbar-2='111187']"
+        >
+            <select-node query="@skillbar-2">
+                <set-value value="" />
+            </select-node>
+        </select-nodes>
+
+        <select-nodes
+            query="//result[@skillbar-2='111700' or @skillbar-2='111701' or @skillbar-2='111702' or @skillbar-2='111706']"
+        >
+            <select-node query="@skillbar-2">
+                <set-value value="" />
+            </select-node>
+        </select-nodes>
+
+        <!-- Fire move Burning Fist and Awakend Burning Fist to RMB -->
+        <select-nodes
+            query="//result[@skillbar-2='111520' or @skillbar-2='111521' or @skillbar-2='111522' or @skillbar-2='111524' or @skillbar-2='111525' or @skillbar-2='111526']"
+        >
+            <select-node query="@skillbar-2">
+                <set-value value="" />
+            </select-node>
+        </select-nodes>
+
+        <select-nodes
+            query="//result[@skillbar-2='111720' or @skillbar-2='111721' or @skillbar-2='111722']"
+        >
+            <select-node query="@skillbar-2">
+                <set-value value="" />
+            </select-node>
+        </select-nodes>
+    </patch>
+    <!-- Wind -->
+    <patch filename="*skill3_contextscriptdata_kungfufighter.xml">
+        <select-nodes
+            query="/table/contextscript/stance[@stance='단타']/layer[1]"
+        >
+            <!-- Auto Bluebuff on  SB-->
+			<insert-sibling-before name="layer">
+				<append-child name="decision">
+					<append-child name="condition">
+						<append-attribute name="skill" value="340000138" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="303000015" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="420112000" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="112000" />
+					</append-child>
+					<append-child name="result">
+						<append-attribute name="special-1" value="112000" />
+						<append-attribute name="key-status" value="unpress" />
+						<append-attribute name="control-mode" value="bns" />
+					</append-child>
+				</append-child>
+			</insert-sibling-before>
+			<insert-sibling-before name="layer">
+				<append-child name="decision">
+					<append-child name="condition">
+						<append-attribute name="skill" value="340000138" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="303000015" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="420111000" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="111000" />
+					</append-child>
+					<append-child name="result">
+						<append-attribute name="special-1" value="111000" />
+						<append-attribute name="key-status" value="unpress" />
+						<append-attribute name="control-mode" value="bns" />
+					</append-child>
+				</append-child>
+			</insert-sibling-before>
+
+			<!-- Auto Bluebuff on  Polarity -->
+			<insert-sibling-before name="layer">
+				<append-child name="decision">
+					<append-child name="condition">
+						<append-attribute name="skill" value="340000140" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="303000017" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="420112000" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="112000" />
+					</append-child>
+					<append-child name="result">
+						<append-attribute name="special-1" value="112000" />
+						<append-attribute name="key-status" value="unpress" />
+						<append-attribute name="control-mode" value="bns" />
+					</append-child>
+				</append-child>
+			</insert-sibling-before>
+			<insert-sibling-before name="layer">
+				<append-child name="decision">
+					<append-child name="condition">
+						<append-attribute name="skill" value="340000140" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="303000017" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="420111000" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="111000" />
+					</append-child>
+					<append-child name="result">
+						<append-attribute name="special-1" value="111000" />
+						<append-attribute name="key-status" value="unpress" />
+						<append-attribute name="control-mode" value="bns" />
+					</append-child>
+				</append-child>
+			</insert-sibling-before>
+
+
+
+
+
+        <!-- Cylone Kick RMB-->
+        <insert-sibling-before name="layer">
+            <!-- shenlong form -->
+            <append-child name="decision">
+                <append-child name="condition">
+                    <append-attribute name="field" value="job-style-only" />
+                    <append-attribute name="job-style" value="advanced-2" />
+                </append-child>
+                <append-child name="condition">
+                    <append-attribute name="skill" value="310000100" />
+                </append-child>
+                <append-child name="condition">
+                    <append-attribute name="skill" value="420112380" />
+                    <append-attribute name="variation-id" value="1" />
+                </append-child>
+                <append-child name="condition">
+                    <append-attribute name="skill" value="112380" />
+                    <append-attribute name="variation-id" value="1" />
+                </append-child>
+                <append-child name="result">
+                    <append-attribute name="context-2" value="112380" />
+                    <append-attribute name="control-mode" value="bns" />
+                </append-child>
+            </append-child>
+	</insert-sibling-before>
+
+        <!-- Cylone Kick RMB-->
+        <insert-sibling-before name="layer">
+            <!-- Awakekend Cylone Kick 112720 var 5 -->
+            <append-child name="decision">
+                <append-child name="condition">
+                    <append-attribute name="field" value="job-style-only" />
+                    <append-attribute name="job-style" value="advanced-2" />
+                </append-child>
+                <append-child name="condition">
+                    <append-attribute name="skill" value="420112720" />
+                </append-child>
+                <append-child name="condition">
+                    <append-attribute name="skill" value="112720" />
+                    <append-attribute name="variation-id" value="5" />
+                </append-child>
+                <append-child name="result">
+                    <append-attribute name="context-2" value="112720" />
+                    <append-attribute name="control-mode" value="bns" />
+                </append-child>
+            </append-child>
+            <!-- Cylone Kick 112040 var 5 -->
+            <append-child name="decision">
+                <append-child name="condition">
+                    <append-attribute name="field" value="job-style-only" />
+                    <append-attribute name="job-style" value="advanced-2" />
+                </append-child>
+                <append-child name="condition">
+                    <append-attribute name="skill" value="420112040" />
+                </append-child>
+                <append-child name="condition">
+                    <append-attribute name="skill" value="112040" />
+                    <append-attribute name="variation-id" value="5" />
+                </append-child>
+                <append-child name="result">
+                    <append-attribute name="context-2" value="112040" />
+                    <append-attribute name="control-mode" value="bns" />
+                </append-child>
+            </append-child>
+        </insert-sibling-before>
+        <!-- Comet Strike 112240 var 1 -->
+        <insert-sibling-before name="layer">
+            <append-child name="decision">
+                <append-child name="condition">
+                    <append-attribute name="field" value="job-style-only" />
+                    <append-attribute name="job-style" value="advanced-2" />
+                </append-child>
+                <append-child name="condition">
+                    <append-attribute name="skill" value="420112240" />
+                </append-child>
+                <append-child name="condition">
+                    <append-attribute name="skill" value="112240" />
+                    <append-attribute name="variation-id" value="1" />
+                </append-child>
+                <append-child name="result">
+                    <append-attribute name="context-2" value="112240" />
+                    <append-attribute name="control-mode" value="bns" />
+                </append-child>
+            </append-child>
+        </insert-sibling-before>
+        <!-- Warcry-->
+            <insert-sibling-before name="layer">
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-2" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="420112725" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="112725" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="special-2" value="112725" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+            </insert-sibling-before>
+        </select-nodes>
+    </patch>
+    <!-- Fire-->
+    <patch filename="*skill3_contextscriptdata_kungfufighter.xml">
+        <select-nodes
+            query="/table/contextscript/stance[@stance='단타']/layer[1]"
+        >
+
+
+        <!-- Auto Bluebuff on  SB-->
+			<insert-sibling-before name="layer">
+				<append-child name="decision">
+				    <append-child name="condition">
+						<append-attribute name="skill" value="69001160" />
+					</append-child>
+				    <append-child name="condition">
+						<append-attribute name="skill" value="340000138" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="303000015" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="420112000" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="112000" />
+					</append-child>
+					<append-child name="result">
+						<append-attribute name="special-1" value="112000" />
+						<append-attribute name="key-status" value="unpress" />
+						<append-attribute name="control-mode" value="bns" />
+					</append-child>
+				</append-child>
+			</insert-sibling-before>
+			<insert-sibling-before name="layer">
+				<append-child name="decision">
+				    <append-child name="condition">
+						<append-attribute name="skill" value="69001160" />
+					</append-child>
+				    <append-child name="condition">
+						<append-attribute name="skill" value="340000138" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="303000015" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="420111000" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="111000" />
+					</append-child>
+					<append-child name="result">
+						<append-attribute name="special-1" value="111000" />
+						<append-attribute name="key-status" value="unpress" />
+						<append-attribute name="control-mode" value="bns" />
+					</append-child>
+				</append-child>
+			</insert-sibling-before>
+
+			<!-- Auto Bluebuff on  Polarity -->
+			<insert-sibling-before name="layer">
+				<append-child name="decision">
+				    <append-child name="condition">
+						<append-attribute name="skill" value="69001160" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="340000140" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="303000017" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="420112000" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="111000" />
+					</append-child>
+					<append-child name="result">
+						<append-attribute name="special-1" value="111000" />
+						<append-attribute name="key-status" value="unpress" />
+						<append-attribute name="control-mode" value="bns" />
+					</append-child>
+				</append-child>
+			</insert-sibling-before>
+			<insert-sibling-before name="layer">
+				<append-child name="decision">
+				    <append-child name="condition">
+						<append-attribute name="skill" value="69001160" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="340000140" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="303000017" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="420111000" />
+					</append-child>
+					<append-child name="condition">
+						<append-attribute name="skill" value="111000" />
+					</append-child>
+					<append-child name="result">
+						<append-attribute name="special-1" value="111000" />
+						<append-attribute name="key-status" value="unpress" />
+						<append-attribute name="control-mode" value="bns" />
+					</append-child>
+				</append-child>
+			</insert-sibling-before>
+
+                       <!-- skillbar-2 Avenging fist and Guiding Fist -->
+            <insert-sibling-before name="layer">
+                <!-- Avengeing fist to 2 -->
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111311" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111311" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="skillbar-2" value="111311" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <!-- Guiding Fist to 2 -->
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="skillbar-2" value="111330" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+            </insert-sibling-before>
+            <!-- context-2 DMG Rotation -->
+            <insert-sibling-before name="layer">
+                <!-- Tremor -->
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="420111400" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111400" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="special-2" value="111400" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <!-- Comet Strike -->
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="420111240" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111240" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="special-2" value="111240" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <!-- Smolder-->
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="420111050" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111050" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="special-2" value="111050" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+
+                <!-- no Liberty Effect-->
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="310000072" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111380" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="special-2" value="111380" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+            </insert-sibling-before>
+            <!-- No Raging Vulcano Effect use Searing Dragon to refresh it -->
+            <insert-sibling-before name="layer">
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="310000104" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="420111370" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="special-2" value="111370" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+            </insert-sibling-before>
+            <insert-sibling-before name="layer">
+                <!-- Awakend Burning Fist 111720, 111721, 111722 -->
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111722" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111722" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111722" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111721" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111721" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111721" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111720" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111720" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111720" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+
+                <!--Burning Fist 111520, 111521, 111522, 111524, 111525, 111526 -->
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111526" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111526" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111526" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111525" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111525" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111525" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111524" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111524" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111524" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111522" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111522" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111522" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111521" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111521" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111521" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111520" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111520" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111520" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <!-- Awakend Dragon Claw  111700, 111701, 111702, 111706 -->
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111706" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111706" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111706" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111702" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111702" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111702" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111701" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111701" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111701" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111700" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111700" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111700" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <!-- Dragon Claw 111180, 111181, 111182, 111183, 111184, 111185, 111186, 111187 -->
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111187" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111187" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111187" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111186" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111186" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111186" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111185" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111185" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111185" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111184" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111184" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111184" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111183" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111183" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111183" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111182" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111182" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111182" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111181" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111181" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111181" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="422111180" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="111180" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="context-2" value="111180" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+            </insert-sibling-before>
+        </select-nodes>
+    </patch>
+</patches>
