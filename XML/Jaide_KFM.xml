@@ -499,6 +499,9 @@
                         <append-attribute name="job-style" value="advanced-1" />
                     </append-child>
                     <append-child name="condition">
+                        <append-attribute name="skill" value="420111240" />
+                    </append-child>
+                    <append-child name="condition">
                         <append-attribute name="skill" value="420111050" />
                     </append-child>
                     <append-child name="condition">
@@ -537,6 +540,9 @@
                         <append-attribute name="job-style" value="advanced-1" />
                     </append-child>
                     <append-child name="condition">
+                        <append-attribute name="skill" value="69001080" />
+                    </append-child>
+                    <append-child name="condition">
                         <append-attribute name="skill" value="313000001" />
                     </append-child>
                     <append-child name="condition">
@@ -554,6 +560,9 @@
                     <append-child name="condition">
                         <append-attribute name="field" value="job-style-only" />
                         <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="69001080" />
                     </append-child>
                     <append-child name="condition">
                         <append-attribute name="skill" value="303000002" />
