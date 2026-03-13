@@ -499,7 +499,7 @@
                         <append-attribute name="job-style" value="advanced-1" />
                     </append-child>
                     <append-child name="condition">
-                        <append-attribute name="skill" value="420111240" />
+                        <append-attribute name="skill" value="421111240" />
                     </append-child>
                     <append-child name="condition">
                         <append-attribute name="skill" value="420111050" />
