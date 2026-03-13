@@ -3,16 +3,16 @@
     CSCC Item Guide (3030000xx and 3130000xx)
     =========================================
     These codes represent Soul Badge/Chi Boost effects that activate certain conditions.
-    
+
     3030000xx - Soul Badge Effects:
     - 303000001: Searing Dragon Auto - Enables automatic Searing Dragon via special-2
     - 303000015: SB (Soul Badge) - Used for auto Bluebuff on SB activation
     - 303000017: Polarity - Used for auto Bluebuff on Polarity activation
-    
+
     3130000xx - Additional Badge/Effect IDs:
     - 313000001: Searing Dragon Manual - Moves Searing Dragon to context-1 (LMB) for manual use
     - Format: 3130000xx where xx is the specific effect identifier
-    
+
     Usage in conditions:
     - Combined with 340000138 (SB check) or 340000140 (Polarity check)
     - Triggers special-1 result for Bluebuff (112000/111000)
@@ -505,7 +505,8 @@
                         <append-attribute name="skill" value="111050" />
                     </append-child>
                     <append-child name="result">
-                        <append-attribute name="special-2" value="111050" />
+                        <append-attribute name="special-1" value="111050" />
+                        <append-attribute name="key-status" value="unpress" />
                         <append-attribute name="control-mode" value="bns" />
                     </append-child>
                 </append-child>
@@ -543,6 +544,25 @@
                     </append-child>
                     <append-child name="result">
                         <append-attribute name="context-1" value="111370" />
+                        <append-attribute name="control-mode" value="bns" />
+                    </append-child>
+                </append-child>
+            </insert-sibling-before>
+            <!-- Searing Dragon auto with 303000002 - always use when up, no special checks -->
+            <insert-sibling-before name="layer">
+                <append-child name="decision">
+                    <append-child name="condition">
+                        <append-attribute name="field" value="job-style-only" />
+                        <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="303000002" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="420111370" />
+                    </append-child>
+                    <append-child name="result">
+                        <append-attribute name="special-2" value="111370" />
                         <append-attribute name="control-mode" value="bns" />
                     </append-child>
                 </append-child>
