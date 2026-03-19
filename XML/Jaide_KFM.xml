@@ -43,9 +43,32 @@
 <patches>
     <!-- Remaps-->
     <patch filename="*skill3_contextscriptdata_kungfufighter.xml">
+        <!-- Remove Classic -->
+        <select-nodes query="//result[@control-mode='classic']">
+            <remove />
+        </select-nodes>
+        <!-- Remove Skill UI Effects -->
+        <select-nodes
+            query="/table/contextscript/stance/layer/decision/result/@*[contains(name(),'-ui-effect')]"
+        >
+            <remove />
+        </select-nodes>
+        <!-- Remove Unused Battle Royale Stuff -->
+        <select-nodes
+            query="//result[@*[contains(name(), 'extra-skillbar-') and starts-with(., '75')]]/ancestor::*[2]"
+        >
+            <remove />
+        </select-nodes>
 
         <!-- Remove B ULT-->
         <select-nodes query="//result[@special-2]">
+            <remove />
+        </select-nodes>
+
+        <!-- Remove layers with job-style-only base-x conditions -->
+        <select-nodes
+            query="//layer[decision/condition[@field='job-style-only' and starts-with(@job-style, 'base-')]]"
+        >
             <remove />
         </select-nodes>
 
@@ -482,6 +505,9 @@
                         <append-attribute name="job-style" value="advanced-1" />
                     </append-child>
                     <append-child name="condition">
+                        <append-attribute name="skill" value="69001080" />
+                    </append-child>
+                    <append-child name="condition">
                         <append-attribute name="skill" value="420111240" />
                     </append-child>
                     <append-child name="condition">
@@ -582,6 +608,9 @@
                     <append-child name="condition">
                         <append-attribute name="field" value="job-style-only" />
                         <append-attribute name="job-style" value="advanced-1" />
+                    </append-child>
+                    <append-child name="condition">
+                        <append-attribute name="skill" value="69001080" />
                     </append-child>
                     <append-child name="condition">
                         <append-attribute name="skill" value="303000001" />
@@ -1014,5 +1043,6 @@
                 </append-child>
             </insert-sibling-before>
         </select-nodes>
+        <save-file path="Z:\Projects\SEBNS\Exports\KFM_result.xml" />
     </patch>
 </patches>
